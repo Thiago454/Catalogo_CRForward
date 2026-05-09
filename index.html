@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Zapatillas 2026</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Librería PDF.js (Mozilla) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+</head>
+<body>
+    <!-- Fondo Principal -->
+    <div class="background-overlay">
+        <img src="img/fondo1.webp" alt="Fondo Deportivo" class="bg-img">
+    </div>
+
+    <!-- Menú de Catálogos -->
+    <main id="main-menu" class="container">
+        <div class="sidebar">
+            <!-- Tarjeta 1 -->
+            <div class="card" onclick="openPDF('pdfs/catalogo-deportivas-cr.pdf', 'Catálogo Deportivas')">
+                <img src="img/deportivas.png" alt="Deportivas" class="card-thumb">
+                <div class="card-content">
+                    <h3>DEPORTIVAS</h3>
+                    <p>Lo último en tecnología para running y alto rendimiento.</p>
+                    <button>Ver Catálogo</button>
+                </div>
+            </div>
+
+            <!-- Tarjeta 2 -->
+            <div class="card" onclick="openPDF('pdfs/catalogo-hombre-cr.pdf', 'Catálogo Hombre')">
+                <img src="img/hombre.webp" alt="Hombre" class="card-thumb">
+                <div class="card-content">
+                    <h3>HOMBRE</h3>
+                    <p>Calzado urbano y casual con el mejor estilo actual.</p>
+                    <button>Ver Catálogo</button>
+                </div>
+            </div>
+
+            <!-- Tarjeta 3 -->
+            <div class="card" onclick="openPDF('pdfs/catalogo-mujer-cr.pdf', 'Catálogo Mujer')">
+                <img src="img/mujer.webp" alt="Mujer" class="card-thumb">
+                <div class="card-content">
+                    <h3>MUJER</h3>
+                    <p>Diseños exclusivos que combinan confort y elegancia.</p>
+                    <button>Ver Catálogo</button>
+                </div>
+            </div>
+
+            <!-- Tarjeta 4 -->
+            <div class="card" onclick="openPDF('pdfs/catalogo-ninos-cr.pdf', 'Catálogo Niños')">
+                <img src="img/niños.webp" alt="Niños" class="card-thumb">
+                <div class="card-content">
+                    <h3>NIÑOS</h3>
+                    <p>Resistencia y diversión para los más pequeños.</p>
+                    <button>Ver Catálogo</button>
+                </div>
+            </div>
+        </div> 
+    </main>
+
+    <!-- Visor de PDF con efecto desenfoque -->
+    <div id="pdf-viewer" class="pdf-overlay hidden">
+        <nav class="pdf-navbar">
+            <button onclick="closePDF()" class="btn-back">← Volver al Menú</button>
+            <h2 id="pdf-title">Cargando...</h2>
+            <div class="status">
+                <span class="dot"></span>
+                <small class="user-count">--</small>
+            </div>
+        </nav>
+        
+        <div class="pdf-content" id="pdf-scroll-container">
+            <div class="pdf-wrapper">
+                <div class="pdf-blocker"></div>
+                <div id="pdf-pages-container"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
