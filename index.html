@@ -2,24 +2,42 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo de Zapatillas 2026</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Librería PDF.js (Mozilla) -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">    <link rel="stylesheet" href="style.css">
+    <!-- PDF.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
 </head>
 <body>
-    <!-- Fondo Principal -->
-    <div class="background-overlay">
-        <img src="img/fondo1.webp" alt="Fondo Deportivo" class="bg-img">
+
+    <!-- INTRO CINEMATOGRÁFICA -->
+    <div id="intro-screen">
+        <video autoplay muted playsinline id="intro-video">
+            <source src="video/intro.mp4" type="video/mp4">
+        </video>
+        <div class="intro-overlay">
+            <h1>CR FORWARD</h1>
+            <p>NUEVA TEMPORADA 2026</p>
+        </div>
     </div>
 
-    <!-- Menú de Catálogos -->
+    <!-- FONDO -->
+    <div class="background-overlay">
+        <img src="img/fondo1.webp" alt="Fondo" class="bg-img">
+    </div>
+
+    <!-- HEADER -->
+    <header class="topbar">
+        <div class="logo">CR FORWARD</div>
+        <div class="top-text">Catálogo Oficial 2026</div>
+    </header>
+
+    <!-- CONTENIDO -->
     <main id="main-menu" class="container">
+
+        <!-- IZQUIERDA -->
         <div class="sidebar">
-            <!-- Tarjeta 1 -->
+            <!-- TARJETA 1 -->
             <div class="card" onclick="openPDF('pdfs/catalogo-deportivas-cr.pdf', 'Catálogo Deportivas')">
-                <img src="img/deportivas.png" alt="Deportivas" class="card-thumb">
+                <img src="img/deportivas.webp" alt="Deportivas" class="card-thumb">
                 <div class="card-content">
                     <h3>DEPORTIVAS</h3>
                     <p>Lo último en tecnología para running y alto rendimiento.</p>
@@ -27,7 +45,7 @@
                 </div>
             </div>
 
-            <!-- Tarjeta 2 -->
+            <!-- TARJETA 2 -->
             <div class="card" onclick="openPDF('pdfs/catalogo-hombre-cr.pdf', 'Catálogo Hombre')">
                 <img src="img/hombre.webp" alt="Hombre" class="card-thumb">
                 <div class="card-content">
@@ -37,7 +55,7 @@
                 </div>
             </div>
 
-            <!-- Tarjeta 3 -->
+            <!-- TARJETA 3 -->
             <div class="card" onclick="openPDF('pdfs/catalogo-mujer-cr.pdf', 'Catálogo Mujer')">
                 <img src="img/mujer.webp" alt="Mujer" class="card-thumb">
                 <div class="card-content">
@@ -47,7 +65,7 @@
                 </div>
             </div>
 
-            <!-- Tarjeta 4 -->
+            <!-- TARJETA 4 -->
             <div class="card" onclick="openPDF('pdfs/catalogo-ninios-cr.pdf', 'Catálogo Niños')">
                 <img src="img/niños.webp" alt="Niños" class="card-thumb">
                 <div class="card-content">
@@ -56,25 +74,55 @@
                     <button>Ver Catálogo</button>
                 </div>
             </div>
-        </div> 
+        </div>
+
+        <!-- DERECHA -->
+        <div class="hero-side">
+            <div class="hero-box">
+                <span class="hero-tag">NUEVA TEMPORADA</span>
+                <h1>CR FORWARD</h1>
+                <p>Descubre los nuevos lanzamientos exclusivos de CR FORWARD. Diseños deportivos, urbanos y casuales con estilo moderno.</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <h2>+50</h2>
+                        <span>Modelos</span>
+                    </div>
+                    <div class="stat">
+                        <h2>2026</h2>
+                        <span>Temporada</span>
+                    </div>
+                    <div class="stat">
+                        <h2>4</h2>
+                        <span>Catálogos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </main>
 
-    <!-- Visor de PDF con efecto desenfoque -->
+    <!-- VISOR PDF -->
     <div id="pdf-viewer" class="pdf-overlay hidden">
         <nav class="pdf-navbar">
-            <button onclick="closePDF()" class="btn-back">← Volver al Menú</button>
+            <button onclick="closePDF()" class="btn-back">← Volver</button>
             <h2 id="pdf-title">Cargando...</h2>
             <div class="status">
                 <span class="dot"></span>
                 <small class="user-count">--</small>
             </div>
         </nav>
-        
         <div class="pdf-content" id="pdf-scroll-container">
             <div class="pdf-wrapper">
-                <div class="pdf-blocker"></div>
                 <div id="pdf-pages-container"></div>
             </div>
+        </div>
+    </div>
+
+    <!-- LOADER -->
+    <div id="loader" class="loader-overlay hidden">
+        <div class="loader-content">
+            <div class="spinner"></div>
+            <h2>Cargando catálogo...</h2>
         </div>
     </div>
 
